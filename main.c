@@ -4,7 +4,7 @@
 int main() 
 {
   double current_balance;
-  double amount;
+  double amount; 
   int option;
      printf("Input current balance\n"); 
    scanf("%lf", &current_balance);
@@ -18,7 +18,6 @@ int main()
    if(option==3){
       printf("Current Balance is %f\n", current_balance);
    }
-   
         if (option==1){
    
         printf("Enter Amount to be credited:\n");
@@ -32,6 +31,7 @@ int main()
         scanf("%lf", &amount);
          current_balance = handle_transaction(current_balance, DEBIT, amount);
           printf("New Balance is %f\n", current_balance);
+           
     }
 }
 
@@ -46,8 +46,8 @@ int main()
    if (type==CREDIT)
    { 
 
-   if (amount > minimum_chargable_amount){
-       
+   if (amount > minimum_chargable_amount)
+       {
        amount = amount - charge;
        printf("#50 was deducted due to charges\n");
    }
@@ -57,22 +57,22 @@ int main()
    
    
    else if (type== DEBIT) {
-       
-   if (amount > balance){
+       if (amount > balance){
        printf("ERROR; INSUFFICIENT BALANCE\n");
-     return 0;
+     return balance;
   }
-  
+    
    if (amount > minimum_chargable_amount){
        
        amount = amount + charge;
        
    }
-   balance = (balance - amount);
+   
     if (amount > minimum_chargable_amount) {
    printf("#50 was deducted due to charges\n");
        }
-   
+   balance = (balance - amount);
    }
+   
    return balance;
  }
