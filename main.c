@@ -1,12 +1,33 @@
 #include <stdio.h>
+
     enum TransactionType {CREDIT ,DEBIT};
     double handle_transaction(double balance, enum TransactionType type, double amount);
+struct registration
+{
+    char name[50];
+    char surname[12];
+    char nin[15];
+    char phone_number[11];
+};
 int main() 
 {
+    struct registration userInfo;
+    printf("Enter Name\n");
+    scanf("%s", userInfo.name);
+    
+     printf("\nEnter Surname\n");
+    scanf("%s", userInfo.surname);
+    
+     printf("\nEnter NIN\n");
+    scanf("%s", userInfo.nin);
+    
+     printf("\nEnter Phone Number\n");
+    scanf("%s", userInfo.phone_number);
+    
   double current_balance;
   double amount; 
   int option;
-     printf("Input current balance\n"); 
+     printf("\nInput current balance\n"); 
    scanf("%lf", &current_balance);
  
   printf ("Please select the transaction type\n");
@@ -26,7 +47,8 @@ int main()
  current_balance = handle_transaction(current_balance, CREDIT, amount);
   printf("New Balance is %f\n", current_balance);
     }
-     if (option==2){
+     if (option==2)
+    {
         printf("Enter Amount to be debited:\n");
         scanf("%lf", &amount);
          current_balance = handle_transaction(current_balance, DEBIT, amount);
