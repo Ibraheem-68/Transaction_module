@@ -12,29 +12,40 @@ struct user {
 };
 int main()
 {
-    struct user userInfo;
-    printf("Enter Name\n");
-    scanf("%s", userInfo.name);
+    int i;
+    int n;
+    printf("How many users do you want to register?\n");
+    scanf("%d", &n);
+    struct user userInfo[100];
+    for(i = 0; i < n; i++) {
 
-    printf("\nEnter Surname\n");
-    scanf("%s", userInfo.surname);
+        printf("Enter Name %d\n", i + 1);
+        scanf("%s", &userInfo[i].name);
 
-    printf("\nEnter NIN\n");
-    scanf("%s", userInfo.nin);
+        printf("\nEnter Surname %d\n", i + 1);
+        scanf("%s", &userInfo[i].surname);
 
-    printf("\nEnter Phone Number\n");
-    scanf("%s", userInfo.phone_number);
+        printf("\nEnter NIN %d\n", i + 1);
+        scanf("%s", &userInfo[i].nin);
 
-    printf("\nEnter Password\n");
-    scanf("%s", userInfo.password);
+        printf("\nEnter Phone Number %d\n", i + 1);
+        scanf("%s", &userInfo[i].phone_number);
 
+        printf("\nEnter Password %d\n", i + 1);
+        scanf("%s", &userInfo[i].password);
+    }
+    printf("\n");
     printf("\nRegistration Successfull!!!\n");
-    printf("Registration details:\n");
-    printf("Name: %s\n", userInfo.name);
-    printf("Surname: %s\n", userInfo.surname);
-    printf("NIN: %s\n", userInfo.nin);
-    printf("Phone Number: %s\n", userInfo.phone_number);
-    printf("Password: %s\n", userInfo.password);
+    for(i = 0; i < n; i++) {
+        printf("\nRegistration details for User %d:\n", i + 1);
+        printf("\nuser: %d\n", i + 1);
+        printf("Name: %s\n", userInfo[i].name);
+        printf("Surname: %s\n", userInfo[i].surname);
+        printf("NIN: %s\n", userInfo[i].nin);
+        printf("Phone Number: %s\n", userInfo[i].phone_number);
+        printf("Password: %s\n", userInfo[i].password);
+    }
+
     double current_balance;
     double amount;
     int option;
@@ -81,7 +92,7 @@ double handle_transaction(double balance, enum TransactionType type, double amou
         }
 
         balance = (balance + amount);
-
+        break;
     case DEBIT:
         if(amount > balance) {
             printf("ERROR; INSUFFICIENT BALANCE\n");
